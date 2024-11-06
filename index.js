@@ -310,10 +310,12 @@ const validComp = (theGroup) => {
 
     if (overlapList.length == 1) { //if there is only 1 overlap between check which has more possible choices, the larger gets the overlapped removed from their pool
         if (tankList.length > healerList.length) {
-            tankList.splice(overlapList[0], 1)
+            const overlappedPerson = tankList.indexOf(overlapList[0])
+            tankList.splice(overlappedPerson, 1)
         }
         else {
-            healerList.splice(overlapList[0], 1)
+            const overlappedPerson = healerList.indexOf(overlapList[0])
+            healerList.splice(overlappedPerson, 1)
         }
 
         tank = tankList[getRandomNumber(0, tankList.length - 1)]

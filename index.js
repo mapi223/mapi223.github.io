@@ -2,6 +2,16 @@ function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const generatePlayerForms = () => {
+    const topDiv = document.createElement('div');
+    topDiv.className = "flexBox";
+    document.body.appendChild(topDiv);
+    topDiv.id = "topDiv";
+    for (let i = 0; i < 5; i++) {
+        topDiv.appendChild(fillForm(i));
+    }
+}
+
 const hunter = classDamageOnlyPickSpec = () => {
     const specChooser = getRandomNumber(1, 3);
     if (specChooser == 1) {
@@ -369,115 +379,4 @@ const validComp = (theGroup) => {
     return grpSpec;
 }
 
-
-
-
-const button1 = document.createElement("button");
-document.body.appendChild(button1);
-button1.textContent = "run the roulette";
-
-
-button1.onclick = onbuttonclicked;
-let output1;
-let output2;
-
-
-const randomClass = (classArray) => {
-    return classArray[getRandomNumber(0, classArray.length - 1)];
-}
-
-const getClassFromCheckbox = (checkedArray) => {
-    const classArray = [];
-    for (let i = 0; i < checkedArray.length; i++) {
-        if (checkedArray[i]) {
-            switch (i) {
-                case 0:
-                    classArray.push("Death Knight")
-                    break;
-                case 1:
-                    classArray.push("Demon Hunter")
-                    break;
-                case 2:
-                    classArray.push("Druid")
-                    break;
-                case 3:
-                    classArray.push("Evoker")
-                    break;
-                case 4:
-                    classArray.push("Hunter")
-                    break;
-                case 5:
-                    classArray.push("Mage")
-                    break;
-                case 6:
-                    classArray.push("Monk")
-                    break;
-                case 7:
-                    classArray.push("Paladin")
-                    break;
-                case 8:
-                    classArray.push("Priest")
-                    break;
-                case 9:
-                    classArray.push("Rogue")
-                    break;
-                case 10:
-                    classArray.push("Shaman")
-                    break;
-                case 11:
-                    classArray.push("Warlock")
-                    break;
-                case 12:
-                    classArray.push("Warrior")
-                    break;
-            }
-        }
-
-    }
-    return classArray;
-}
-
-
-const formGroupArray = (arrayOfChoiceArrays) => {
-    const group = [];
-    for (let i = 0; i < arrayOfChoiceArrays.length; i++) {
-        group.push(randomClass(arrayOfChoiceArrays[i]))
-    }
-    return group;
-}
-
-
-
-function onbuttonclicked() {
-    const selectElement1 = document.getElementById("player1Form");
-    const selectElement2 = document.getElementById("player2Form");
-    const selectElement3 = document.getElementById("player3Form");
-    const selectElement4 = document.getElementById("player4Form");
-    const selectElement5 = document.getElementById("player5Form");
-    const player1classes = [];
-    const player2classes = [];
-    const player3classes = [];
-    const player4classes = [];
-    const player5classes = [];
-    for (let i = 1; i < 14; i++) {
-        player1classes.push(selectElement1.elements["class" + i].checked)
-        player2classes.push(selectElement2.elements["class" + i].checked)
-        player3classes.push(selectElement3.elements["class" + i].checked)
-        player4classes.push(selectElement4.elements["class" + i].checked)
-        player5classes.push(selectElement5.elements["class" + i].checked)
-    }
-    const player1Choices = getClassFromCheckbox(player1classes);
-    const player2Choices = getClassFromCheckbox(player2classes);
-    const player3Choices = getClassFromCheckbox(player3classes);
-    const player4Choices = getClassFromCheckbox(player4classes);
-    const player5Choices = getClassFromCheckbox(player5classes);
-
-    const group = (formGroupArray([player1Choices, player2Choices, player3Choices, player4Choices, player5Choices]));
-    output1 = `${selectElement1.elements["player1"].value} is a ${group[0]}, ${selectElement2.elements["player1"].value} is a ${group[1]}, ${selectElement3.elements["player1"].value} is a ${group[2]}, ${selectElement4.elements["player1"].value} is a ${group[3]}, ${selectElement5.elements["player1"].value} is a ${group[4]}`;
-    const grpSpec = (validComp(group));
-
-    output2 = '\n' + `Tank: ${grpSpec[0]} Healer: ${grpSpec[1]} The damage: ${grpSpec[2]}, ${grpSpec[3]}, ${grpSpec[4]}`
-    document.getElementById("output1").innerHTML = output1;
-    document.getElementById("output2").innerHTML = output2;
-
-}
+generatePlayerForms();

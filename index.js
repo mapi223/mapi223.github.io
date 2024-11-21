@@ -380,3 +380,5 @@ const validComp = (theGroup) => {
 }
 
 generatePlayerForms();
+createClassButtons();
+console.log("This will run forever.");

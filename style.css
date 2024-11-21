@@ -3,72 +3,91 @@
 
 }
 
-.flex-container {
+.classButton {
+    border-radius: 25px;
+    font-size: 1rem;
+    padding: .25rem .75rem;
+}
+
+.flexBox {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    gap: 30px;
+}
+
+.flexBox form {
+    flex: 1 1 200px;
 }
 
 .hidden {
     display: none;
 }
 
-.inputForms {
-    flex-basis: 80px;
-}
-
 .odds {
     background-color: lightgray;
 }
 
-.deathKnight {
-    color: #C41E3A
+.deathKnight:hover,
+.deathKnight.active {
+    background-color: #C41E3A;
 }
 
-.demonHunter {
-    color: #A330C9
+.demonHunter:hover,
+.demonHunter.active {
+    background-color: #A330C9;
 }
 
-.druid {
-    color: #FF7C0A
+.druid:hover,
+.druid.active {
+    background-color: #FF7C0A;
 }
 
-.evoker {
-    color: #33937F
+.evoker:hover,
+.evoker.active {
+    background-color: #33937F;
 }
 
-.hunter {
-    color: #AAD372
+.hunter:hover,
+.hunter.active {
+    background-color: #AAD372;
 }
 
-.mage {
-    color: #3FC7EB
+.mage:hover,
+.mage.active {
+    background-color: #3FC7EB;
 }
 
-.monk {
-    color: #00FF98
+.monk:hover,
+.monk.active {
+    background-color: #00FF98;
 }
 
-.paladin {
-    color: #F48CBA
+.paladin:hover,
+.paladin.active {
+    background-color: #F48CBA;
 }
 
-.priest {
-    color: #FFFFFF
+.priest:hover,
+.priest.active {
+    background-color: #FFFFFF;
 }
 
-.rogue {
-    color: #FFF468
+.rogue:hover,
+.rogue.active {
+    background-color: #FFF468;
 }
 
-.shaman {
-    color: #0070DD
+.shaman:hover,
+.shaman.active {
+    background-color: #0070DD;
 }
 
-.warlock {
-    color: #8788EE
+.warlock:hover,
+.warlock.active {
+    background-color: #8788EE;
 }
 
-.warrior {
-    color: #C69B6D
+.warrior:hover,
+.warrior.active {
+    background-color: #C69B6D;
 }

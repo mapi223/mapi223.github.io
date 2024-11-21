@@ -9,6 +9,10 @@ const Player5Array = [];
 const players = [Player1Array, Player2Array, Player3Array, Player4Array, Player5Array];
 let groupOrder = [];
 
+const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const toggleClassSelection = (source) => {
     const button = source.srcElement;
     const playerNum = button.parentElement.parentElement.id[6];

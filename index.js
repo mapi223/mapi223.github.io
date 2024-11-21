@@ -91,7 +91,7 @@ const demonHunter = classDamageAndTankPickSpec = (needTank) => {
 
 const warrior = classDamageAndTankPickSpec = (needTank) => {
     if (needTank) {
-        return "Protection Warrior"
+        return "Warrior"
     }
     else {
         const specChooser = getRandomNumber(1, 2);
@@ -129,14 +129,14 @@ const priest = classDamageAndHealerPickSpec = (needHeals) => {
             return "Discipline"
         }
         else {
-            return "Holy Priest"
+            return "Holy"
         }
     }
 }
 
 const shaman = classDamageAndHealerPickSpec = (needHeals) => {
     if (needHeals) {
-        return "Restoration Shaman"
+        return "Shaman"
     }
     else {
         const specChooser = getRandomNumber(1, 2);
@@ -295,6 +295,10 @@ const validComp = (theGroup) => {
     let overlapList = [];
     let tank;
     let healer;
+    groupOrder = [];
+    theGroup.forEach(player => {
+        groupOrder.push(player);
+    });
 
     for (let index = 0; index < theGroup.length; index++) {
         const className = theGroup[index];
@@ -345,28 +349,36 @@ const validComp = (theGroup) => {
         }
 
         tank = tankList[getRandomNumber(0, tankList.length - 1)]
+        groupOrder[theGroup.indexOf(tank)] = 'tank';
         let personInGroup = theGroup.indexOf(tank);
-        if (personInGroup > -1) { // only splice array when item is found
-            theGroup.splice(personInGroup, 1); // 2nd parameter means remove one item only
+        if (personInGroup > -1) {
+            theGroup.splice(personInGroup, 1);
         }
     }
     else {
         tank = tankList[getRandomNumber(0, tankList.length - 1)]
+        groupOrder[theGroup.indexOf(tank)] = 'tank';
+
         let personInGroup = theGroup.indexOf(tank);
         if (personInGroup > -1) { // only splice array when item is found
-            theGroup.splice(personInGroup, 1); // 2nd parameter means remove one item only
+            theGroup.splice(personInGroup, 1);
         }
         personInGroup = healerList.indexOf(tank);
-        if (personInGroup > -1) { // only splice array when item is found
-            healerList.splice(personInGroup, 1); // 2nd parameter means remove one item only
+        if (personInGroup > -1) {
+            healerList.splice(personInGroup, 1);
         }
     }
     healer = healerList[getRandomNumber(0, healerList.length - 1)]
-    personInGroup = theGroup.indexOf(healer);
-    if (personInGroup > -1) { // only splice array when item is found
-        theGroup.splice(personInGroup, 1); // 2nd parameter means remove one item only
+    if (groupOrder.indexOf(healer) < groupOrder.indexOf('tank')) {
+        groupOrder[theGroup.indexOf(healer)] = 'healer';
     }
-
+    else {
+        groupOrder[theGroup.indexOf(healer) + 1] = 'healer';
+    }
+    personInGroup = theGroup.indexOf(healer);
+    if (personInGroup > -1) {
+        theGroup.splice(personInGroup, 1);
+    }
     const tankSpec = getClass(true, false, tank); //invoke for tank and healer
     const healerSpec = getClass(false, true, healer);
     let grpSpec = [];
@@ -381,4 +393,13 @@ const validComp = (theGroup) => {
 
 generatePlayerForms();
 createClassButtons();
-console.log("This will run forever.");
+
+const button1 = document.createElement("button");
+button1.type = "button";
+document.body.appendChild(button1);
+button1.textContent = "run the roulette";
+
+
+button1.onclick = onRoulletteClick;
+let output1;
+let output2;

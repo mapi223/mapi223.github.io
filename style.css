@@ -29,11 +29,19 @@
     display: none;
 }
 
-.odds {
+.lineBreak {
+    text-align: center;
+}
+
+.odd {
     background-color: lightgray;
 }
 
-.deathKnight:hover,
+.even {
+    background-color: darkgray;
+}
+
+button.deathKnight:hover,
 .deathKnight.active {
     background-color: #C41E3A;
 }

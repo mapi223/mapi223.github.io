@@ -88,7 +88,7 @@ const demonHunter = classDamageAndTankPickSpec = (needTank) => {
 
 const warrior = classDamageAndTankPickSpec = (needTank) => {
     if (needTank) {
-        return "Warrior"
+        return "Protection"
     }
     else {
         const specChooser = getRandomNumber(1, 2);
